@@ -3,7 +3,7 @@ function NavBar() {
     <nav className="navbar navbar-dark bg-dark fixed-top">
       <div className="container-fluid">
         <a className="navbar-brand" href="http://localhost:3000/">
-          Muebleria Markos
+          FurnitureStore The oak
         </a>
         <button
           className="navbar-toggler"
