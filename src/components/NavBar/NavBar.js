@@ -1,7 +1,11 @@
+import CartWidget from "./CartWidget/CartWidget";
+import "./NavBar.css";
+
 function NavBar() {
   return (
     <nav className="navbar navbar-dark bg-dark fixed-top">
       <div className="container-fluid">
+        <CartWidget />
         <a className="navbar-brand" href="http://localhost:3000/">
           FurnitureStore The oak
         </a>
