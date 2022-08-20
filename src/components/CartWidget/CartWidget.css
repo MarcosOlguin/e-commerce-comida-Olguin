@@ -1,0 +1,12 @@
+.cart {
+  width: 30px;
+  background-color: grey;
+
+  padding: 0rem;
+}
+
+.cart-container {
+  background-color: gray;
+  padding: 0.4rem;
+  border-radius: 10%;
+}

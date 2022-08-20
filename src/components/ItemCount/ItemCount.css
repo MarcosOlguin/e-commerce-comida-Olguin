@@ -1,0 +1,12 @@
+.contador {
+  display: flex;
+  flex-direction: column;
+}
+
+.sum {
+  margin-left: 1rem;
+}
+
+.rest {
+  margin-right: 1rem;
+}

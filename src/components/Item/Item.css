@@ -1,0 +1,35 @@
+.flex-center {
+  display: flex;
+  flex-direction: column;
+}
+
+.img-item {
+  min-width: 400px;
+  min-height: 400px;
+}
+
+.item-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 480px));
+  place-content: center;
+}
+
+.div-flex {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.details {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 3vh;
+  padding: 0.8rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.details:hover {
+  background-color: #abb2b9;
+  cursor: pointer;
+}

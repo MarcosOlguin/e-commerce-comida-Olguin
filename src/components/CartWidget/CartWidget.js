@@ -2,7 +2,7 @@ import "./CartWidget.css";
 
 function CartWidget() {
   return (
-    <div>
+    <div className="cart-container">
       <img
         className="cart"
         src="https://raw.githubusercontent.com/MarcosOlguin/e-commerce-muebles-Olguin/main/src/recursos/carrito-de-compras.png"

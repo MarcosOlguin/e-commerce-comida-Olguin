@@ -1,14 +1,10 @@
-import CartWidget from "./CartWidget/CartWidget";
+import CartWidget from "../CartWidget/CartWidget";
 import "./NavBar.css";
 
 function NavBar() {
   return (
     <nav className="navbar navbar-dark bg-dark fixed-top">
       <div className="container-fluid">
-        <CartWidget />
-        <a className="navbar-brand" href="http://localhost:3000/">
-          FurnitureStore The oak
-        </a>
         <button
           className="navbar-toggler"
           type="button"
@@ -18,6 +14,11 @@ function NavBar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
+        <a className="navbar-brand" href="http://localhost:3000/">
+          FurnitureStore The oak
+        </a>
+        <CartWidget />
         <div
           className="offcanvas offcanvas-end text-bg-dark"
           tabindex="-1"
