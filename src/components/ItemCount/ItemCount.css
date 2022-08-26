@@ -5,8 +5,42 @@
 
 .sum {
   margin-left: 1rem;
+  padding: 0rem 0.3rem;
 }
 
 .rest {
   margin-right: 1rem;
+  padding: 0rem 0.3rem;
+}
+
+.button-disabled {
+  border-radius: 5px;
+  padding: 0.3rem;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 0.7rem 2rem 0.7rem 2rem;
+  background-color: #dbae85;
+  color: #ffff;
+}
+
+.button-disabled:disabled {
+  color: #e3e3e3;
+  background-color: gray;
+}
+
+.count-button {
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.no-stock {
+  color: #b6b6b6;
+  text-align: center;
+}
+
+.stock {
+  padding-top: 1rem;
+  margin-left: 1.5rem;
 }

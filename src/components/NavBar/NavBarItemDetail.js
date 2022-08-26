@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import CartWidget from "../CartWidget/CartWidget";
 import WindowModal from "../WindowModal/WindowModal";
-import "./NavBar.css";
+import "./NavBarItemDetail.css";
 import "../../../node_modules/hamburgers/_sass/hamburgers/hamburgers.scss";
 
-function NavBar() {
+function NavBarItemDetail() {
   const [scrollUp, setScrollUp] = useState(true);
   const [isActive, setIsActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -81,23 +81,9 @@ function NavBar() {
             <CartWidget />
           </div>
         </header>
-        <nav>
-          <div className="filter-button-container">
-            <button>Category</button>
-          </div>
-          <div className="filter-button-container">
-            <button>Sort</button>
-          </div>
-          <div className="filter-button-container">
-            <button>Price</button>
-          </div>
-          <div className="filter-button-container">
-            <button>Material</button>
-          </div>
-        </nav>
       </div>
     </>
   );
 }
 
-export default NavBar;
+export default NavBarItemDetail;
