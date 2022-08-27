@@ -18,10 +18,10 @@ function ItemCount({ stock, init, cart }) {
   };
 
   useEffect(() => {
-    if (stock === 0) {
+    if (stock === 0 || contador === 0) {
       setButtonDisabled(true);
-    }
-  }, [stock]);
+    } else setButtonDisabled(false);
+  }, [stock, contador]);
 
   return (
     <div className="contador">

@@ -21,6 +21,11 @@
   padding: 0.7rem 2rem 0.7rem 2rem;
   background-color: #dbae85;
   color: #ffff;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button-disabled:hover {
+  background-color: #99785a;
 }
 
 .button-disabled:disabled {

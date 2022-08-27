@@ -16,7 +16,6 @@
   text-align: center;
   overflow: auto;
   min-height: 10vh;
-
   background-image: url("https://baldocer.com/wp-content/uploads/thumbs/1579519468_714b684648d97a9f65c986ac70336627_env808.jpg");
 }
 
@@ -42,9 +41,6 @@ nav {
   border-bottom: 1px solid #e3e3e3;
 }
 
-nav div {
-}
-
 .menu {
   margin-right: -11px;
 }
@@ -63,4 +59,30 @@ nav div {
   border-radius: 15px;
   padding: 0.5rem 1rem;
   margin: 1rem 2rem 1rem 2rem;
+}
+
+.nav-bar-title:hover {
+  cursor: pointer;
+}
+
+.menu-title {
+  margin-top: 0vh;
+  text-align: center;
+}
+
+.menu-title h2 {
+  font-size: 40px;
+}
+
+.menu-category {
+  padding-top: 2rem;
+}
+
+.nav-bar-title {
+  display: flex;
+}
+
+.nav-bar-title img {
+  max-width: 80px;
+  margin-left: 20px;
 }

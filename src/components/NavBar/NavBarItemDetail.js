@@ -3,11 +3,14 @@ import CartWidget from "../CartWidget/CartWidget";
 import WindowModal from "../WindowModal/WindowModal";
 import "./NavBarItemDetail.css";
 import "../../../node_modules/hamburgers/_sass/hamburgers/hamburgers.scss";
+import { useNavigate } from "react-router-dom";
 
 function NavBarItemDetail() {
   const [scrollUp, setScrollUp] = useState(true);
   const [isActive, setIsActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => {
@@ -38,14 +41,24 @@ function NavBarItemDetail() {
   };
   const handleClickDesactive = () => setIsActive(false);
 
-  console.log(isActive);
+  const navigateHomeClick = () => {
+    navigate("/");
+  };
   return (
     <>
       <WindowModal
         isOpen={isOpen}
         closeModal={closeModal}
         handleClickDesactive={handleClickDesactive}
-      />
+      >
+        <div className="menu-title">
+          <h2>The OAK</h2>
+          <span>Furniture shop</span>
+        </div>
+        <div className="menu-category">
+          <h2>Category</h2>
+        </div>
+      </WindowModal>
 
       <div className={`header ${scrollUp}`}>
         <header className={`trigger-menu-wrapper `}>
@@ -69,9 +82,12 @@ function NavBarItemDetail() {
             </button>
             <span className="menu">Menú</span>
           </div>
-          <div>
-            <h1>The Oak</h1>
-            <span>Furniture Shop</span>
+          <div onClick={navigateHomeClick} className="nav-bar-title">
+            <img src="https://cdn-icons-png.flaticon.com/512/5437/5437538.png" />
+            <div>
+              <h1>The Oak</h1>
+              <span>Furniture Shop</span>
+            </div>
           </div>
           <div>
             <input type="text" placeholder="Search" className="search" />
