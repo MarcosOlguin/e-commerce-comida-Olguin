@@ -5,7 +5,6 @@ import ItemDetail from "./ItemDetail";
 const jsonData = require(`../../api/db.json`);
 
 function ItemDetailCointainer() {
-  const [allItems, setAllItems] = useState(null);
   const [item, setItem] = useState(null);
 
   let { id } = useParams();
@@ -17,20 +16,10 @@ function ItemDetailCointainer() {
       }, 2000);
     });
 
-    task.then((res) => setAllItems(res));
-  }, [jsonData.data]);
-
-  console.log(id);
-  console.log(allItems);
-
-  useEffect(() => {
-    if (allItems) {
-      let filter = allItems.filter((e) => e.id == id);
-      setItem(filter);
-    }
-  }, [allItems]);
-
-  console.log(item);
+    task.then((res) => {
+      setItem(res.filter((e) => e.id == id));
+    });
+  }, [id]);
 
   return (
     <>

@@ -10,7 +10,15 @@ function NavCategories() {
     <div className="categories">
       <p>
         <NavLink
-          to="chairs"
+          to="/"
+          style={({ isActive }) => (isActive ? activeStyle : undefined)}
+        >
+          All
+        </NavLink>
+      </p>
+      <p>
+        <NavLink
+          to="/category/chairs"
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
         >
           Chairs
@@ -18,7 +26,7 @@ function NavCategories() {
       </p>
       <p>
         <NavLink
-          to="tables"
+          to="/category/tables"
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
         >
           Tables
@@ -26,7 +34,7 @@ function NavCategories() {
       </p>
       <p>
         <NavLink
-          to="desks"
+          to="/category/desks"
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
         >
           Desks
@@ -34,7 +42,7 @@ function NavCategories() {
       </p>
       <p>
         <NavLink
-          to="shelfs"
+          to="/category/shelfs"
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
         >
           Shelfs
@@ -42,7 +50,7 @@ function NavCategories() {
       </p>
       <p>
         <NavLink
-          to="beds"
+          to="/category/beds"
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
         >
           Beds
@@ -50,7 +58,7 @@ function NavCategories() {
       </p>
       <p>
         <NavLink
-          to="closets"
+          to="/category/closets"
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
         >
           Closets

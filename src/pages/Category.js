@@ -1,8 +1,12 @@
+import ItemListContainerCategory from "../components/ItemListContainerCategory/ItemListContainerCategory";
+import NavBar from "../components/NavBar/NavBar";
+
 function Category() {
   return (
-    <div>
-      <h1 style={{ paddingTop: "4rem" }}>Categorias</h1>
-    </div>
+    <>
+      <NavBar />
+      <ItemListContainerCategory />;
+    </>
   );
 }
 

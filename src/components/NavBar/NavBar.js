@@ -5,6 +5,7 @@ import "./NavBar.css";
 import "../../../node_modules/hamburgers/_sass/hamburgers/hamburgers.scss";
 import { useNavigate } from "react-router-dom";
 import NavCategories from "./NavCategories";
+import ModalFilters from "./ModalFilters";
 
 function NavBar() {
   const [scrollUp, setScrollUp] = useState(true);
@@ -104,16 +105,22 @@ function NavBar() {
         </header>
         <nav>
           <div className="filter-button-container">
-            <button>Category</button>
+            <select>
+              Category
+              <option value={"chairs"}>chairs</option>
+            </select>
           </div>
           <div className="filter-button-container">
-            <button>Sort</button>
+            <button>Color</button>
           </div>
           <div className="filter-button-container">
             <button>Price</button>
           </div>
           <div className="filter-button-container">
             <button>Material</button>
+          </div>
+          <div className="filter-button-container">
+            <button>Available online</button>
           </div>
         </nav>
       </div>

@@ -11,7 +11,7 @@ function Rutas() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/category" element={<Category />} />
+        <Route path="/category/:category" element={<Category />} />
         <Route path="item/:id" element={<ItemDetailCointainer />} />
       </Routes>
     </>
