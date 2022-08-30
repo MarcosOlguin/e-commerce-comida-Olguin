@@ -42,7 +42,7 @@ function ItemDetail({ item }) {
             </div>
           </div>
           <div className="add-cart-buy">
-            <ItemCount stock={stock} onAdd={onAdd} typeCount={"Buy Now"} />
+            <ItemCount stock={stock} onAdd={onAdd} />
           </div>
         </div>
         <hr />

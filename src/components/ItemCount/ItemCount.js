@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../ItemCount/ItemCount.css";
 
-function ItemCount({ stock, init, onAdd, typeCount }) {
+function ItemCount({ stock, init, onAdd }) {
   const [contador, setContador] = useState((init = 1));
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
@@ -51,7 +51,7 @@ function ItemCount({ stock, init, onAdd, typeCount }) {
           onClick={() => onAdd(contador)}
           disabled={buttonDisabled}
         >
-          {typeCount}
+          Buy Now
         </button>
       </div>
       <div className="button-container">
