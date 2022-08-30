@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "../ItemCount/ItemCount.css";
 
-function ItemCount({ stock, init, cart }) {
-  const [contador, setContador] = useState((init = 0));
+function ItemCount({ stock, init, onAdd, typeCount }) {
+  const [contador, setContador] = useState((init = 1));
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const sumar = () => {
@@ -25,17 +25,11 @@ function ItemCount({ stock, init, cart }) {
 
   return (
     <div className="contador">
-      <div>
-        <button
-          className={`outline outline-2 m-2 button-disabled`}
-          onClick={() => alert(`Se agregaron ${contador} al carrito`)}
-          disabled={buttonDisabled}
-        >
-          Agregar al carrito
-        </button>
-      </div>
       {stock ? (
-        <div>
+        <div className="stock-quantity">
+          <div className="stock">
+            <h2>Stock: {stock}</h2>
+          </div>
           <div className="count-button">
             <h2>Quantity:</h2>
             <button className="rest" onClick={restar}>
@@ -47,13 +41,27 @@ function ItemCount({ stock, init, cart }) {
               +
             </button>
           </div>
-          <div className="stock">
-            <h2>Stock: {stock}</h2>
-          </div>
         </div>
       ) : (
         <h2 className="no-stock">No hay Stock</h2>
       )}
+      <div className="button-container">
+        <button
+          className={`outline outline-2 m-2 button-buy  px-5`}
+          onClick={() => onAdd(contador)}
+          disabled={buttonDisabled}
+        >
+          {typeCount}
+        </button>
+      </div>
+      <div className="button-container">
+        <button
+          className={`outline outline-2 m-2 button-buy  px-5`}
+          disabled={buttonDisabled}
+        >
+          Add to Cart
+        </button>
+      </div>
     </div>
   );
 }

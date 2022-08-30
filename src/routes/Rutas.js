@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import Cart from "../components/Cart/Cart";
 import ItemDetailCointainer from "../components/ItemDetailContainer/ItemDetailContainer";
 import ItemListContainer from "../components/ItemListContainer/ItemListContainer";
 import NavBar from "../components/NavBar/NavBar";
@@ -13,6 +14,7 @@ function Rutas() {
         <Route path="/" element={<Home />} />
         <Route path="/category/:category" element={<Category />} />
         <Route path="item/:id" element={<ItemDetailCointainer />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </>
   );

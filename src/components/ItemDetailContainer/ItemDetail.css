@@ -45,24 +45,6 @@ hr {
   gap: 2rem;
 }
 
-.button-buy {
-  border-radius: 5px;
-  font-size: 20px;
-  padding: 0.7rem 2rem 0.7rem 2rem;
-  background-color: #dbae85;
-  color: #ffff;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.button-buy:disabled {
-  color: #e3e3e3;
-  background-color: gray;
-}
-
-.button-buy:hover {
-  background-color: #99785a;
-}
-
 .description {
   margin-left: 5rem;
   font-size: 20px;

@@ -38,7 +38,7 @@ function NavBar() {
   }, []);
 
   const handleClick = () => {
-    setIsActive(true);
+    !isActive ? setIsActive(true) : setIsActive(false);
     isOpen ? closeModal() : openModal();
   };
   const handleClickDesactive = () => setIsActive(false);

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
 import NavBarItemDetail from "../NavBar/NavBarItemDetail";
 import "./ItemDetail.css";
@@ -6,6 +7,15 @@ import "./ItemDetail.css";
 function ItemDetail({ item }) {
   const { id, title, price, img, stock, description } = item[0];
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [countCart, setCountCart] = useState(0);
+
+  let navigate = useNavigate();
+
+  const onAdd = (count) => {
+    setCountCart(count);
+    navigate("/cart");
+  };
+  console.log(countCart);
 
   useEffect(() => {
     if (stock === 0) {
@@ -32,13 +42,7 @@ function ItemDetail({ item }) {
             </div>
           </div>
           <div className="add-cart-buy">
-            <button
-              className="outline outline-2 m-2 button-buy"
-              disabled={buttonDisabled}
-            >
-              Comprar ahora
-            </button>
-            <ItemCount stock={stock} />
+            <ItemCount stock={stock} onAdd={onAdd} typeCount={"Buy Now"} />
           </div>
         </div>
         <hr />

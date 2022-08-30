@@ -18,6 +18,7 @@
 
 .img-item:hover {
   transform: scale(1.1);
+  cursor: pointer;
 }
 
 .item-list {
@@ -44,4 +45,10 @@
 .details:hover {
   background-color: #abb2b9;
   cursor: pointer;
+}
+
+.item {
+  border-bottom: solid thin green;
+  padding-top: 5rem;
+  border-color: #cdcdcd;
 }

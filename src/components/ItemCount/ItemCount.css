@@ -13,22 +13,23 @@
   padding: 0rem 0.3rem;
 }
 
-.button-disabled {
+.button-buy {
   border-radius: 5px;
   padding: 0.3rem;
   border-radius: 5px;
   font-size: 20px;
   padding: 0.7rem 2rem 0.7rem 2rem;
-  background-color: #dbae85;
+  background-color: #ff8b00;
   color: #ffff;
   transition: background-color 0.3s ease-in-out;
+  width: 100%;
 }
 
-.button-disabled:hover {
-  background-color: #99785a;
+.button-buy:hover {
+  background-color: #cf7100;
 }
 
-.button-disabled:disabled {
+.button-buy:disabled {
   color: #e3e3e3;
   background-color: gray;
 }
@@ -38,6 +39,8 @@
   justify-content: space-evenly;
   border-radius: 5px;
   padding: 0.5rem;
+  font-weight: bold;
+  gap: 1rem;
 }
 
 .no-stock {
@@ -47,5 +50,18 @@
 
 .stock {
   padding-top: 1rem;
-  margin-left: 1.5rem;
+  margin-left: 0.5rem;
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.stock-quantity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
