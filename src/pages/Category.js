@@ -1,11 +1,11 @@
-import ItemListContainerCategory from "../components/ItemListContainerCategory/ItemListContainerCategory";
+import ItemListContainer from "../components/ItemListContainer/ItemListContainer";
 import NavBar from "../components/NavBar/NavBar";
 
 function Category() {
   return (
     <>
       <NavBar />
-      <ItemListContainerCategory />;
+      <ItemListContainer />;
     </>
   );
 }

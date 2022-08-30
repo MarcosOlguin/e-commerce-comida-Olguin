@@ -5,7 +5,7 @@ function Home() {
   return (
     <div>
       <NavBar />
-      <ItemListContainer greeting={"All products"} />
+      <ItemListContainer />
     </div>
   );
 }
