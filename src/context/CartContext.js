@@ -4,6 +4,10 @@ const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const total = cart.reduce(
+    (acc, current) => acc + current.price * current.countCart,
+    0
+  );
 
   const addItem = (item, countCart) => {
     let itemID = { ...item[0], countCart };
@@ -24,15 +28,7 @@ const CartProvider = ({ children }) => {
     let itemToDelte = cart.find((item) => item.id === id);
     console.log(itemToDelte);
 
-    itemToDelte.countCart > 1
-      ? setCart(
-          cart.map((cartItem) =>
-            cartItem.id === id
-              ? { ...cartItem, countCart: cartItem.countCart - 1 }
-              : cartItem
-          )
-        )
-      : setCart(cart.filter((itemCart) => itemCart.id !== id));
+    setCart(cart.filter((itemCart) => itemCart.id !== id));
   };
 
   const clear = () => {
@@ -41,7 +37,7 @@ const CartProvider = ({ children }) => {
 
   const isInCart = () => {};
 
-  const data = { addItem, removeItem, clear, isInCart, cart };
+  const data = { addItem, removeItem, clear, isInCart, cart, setCart, total };
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 };
 

@@ -84,8 +84,8 @@ function NavBarItemDetail() {
           </div>
           <div onClick={navigateHomeClick} className="nav-bar-title">
             <img src="https://cdn-icons-png.flaticon.com/512/5437/5437538.png" />
-            <div>
-              <h1>The Oak</h1>
+            <div className="flex flex-col justify-center text-center">
+              <h1 className="h-8">The Oak</h1>
               <span>Furniture Shop</span>
             </div>
           </div>
