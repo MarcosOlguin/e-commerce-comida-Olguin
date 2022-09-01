@@ -1,27 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import CartContext from "../../context/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
 import NavBarItemDetail from "../NavBar/NavBarItemDetail";
 import "./ItemDetail.css";
 
 function ItemDetail({ item }) {
   const { id, title, price, img, stock, description } = item[0];
-  const [buttonDisabled, setButtonDisabled] = useState(false);
-  const [countCart, setCountCart] = useState(0);
+  const [countCart, setCountCart] = useState(1);
+  const { addItem, removeItem, clear, isInCart } = useContext(CartContext);
 
   let navigate = useNavigate();
 
   const onAdd = (count) => {
     setCountCart(count);
+    addItem(item, count);
     navigate("/cart");
   };
-  console.log(countCart);
-
-  useEffect(() => {
-    if (stock === 0) {
-      setButtonDisabled(true);
-    }
-  }, [stock]);
 
   return (
     <>

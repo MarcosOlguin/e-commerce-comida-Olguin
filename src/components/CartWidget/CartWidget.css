@@ -2,10 +2,30 @@
   width: 40px;
   background-color: transparent;
   padding: 0rem;
+  cursor: pointer;
 }
 
 .cart-container {
   background-color: transparent;
   padding: 0.6rem;
   border-radius: 10px;
+  display: flex;
+}
+
+.circle {
+  font-size: 13px;
+  width: 18px;
+  height: 18px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #000000;
+  color: #ffff;
+  z-index: 999;
+  margin-left: -10px;
+  line-height: 19px;
+}
+
+.circle.true {
+  visibility: hidden;
 }

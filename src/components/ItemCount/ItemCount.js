@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import CartContext from "../../context/CartContext";
 import "../ItemCount/ItemCount.css";
 
 function ItemCount({ stock, init, onAdd }) {
   const [contador, setContador] = useState((init = 1));
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const { addItem } = useContext(CartContext);
 
   const sumar = () => {
     if (contador < stock) {

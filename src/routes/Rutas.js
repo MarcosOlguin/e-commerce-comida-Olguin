@@ -4,7 +4,8 @@ import ItemDetailCointainer from "../components/ItemDetailContainer/ItemDetailCo
 import ItemListContainer from "../components/ItemListContainer/ItemListContainer";
 import NavBar from "../components/NavBar/NavBar";
 import { UseModal } from "../hooks/useModal";
-import Category from "../pages/Category";
+import CartPage from "../pages/CartPage";
+
 import Home from "../pages/Home";
 
 function Rutas() {
@@ -12,9 +13,9 @@ function Rutas() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/category/:category" element={<Category />} />
+        <Route path="/category/:category" element={<Home />} />
         <Route path="item/:id" element={<ItemDetailCointainer />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<CartPage />} />
       </Routes>
     </>
   );
