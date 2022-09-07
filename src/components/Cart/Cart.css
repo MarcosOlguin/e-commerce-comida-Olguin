@@ -62,3 +62,8 @@
 
 .asddd {
 }
+
+.cart-empty {
+  color: #ff8b00;
+  text-decoration: underline;
+}

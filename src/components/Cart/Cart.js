@@ -101,7 +101,9 @@ function Cart() {
         ) : (
           <div className="cart-background-empty text-2xl">
             <h2>Your cart is empty</h2>
-            <NavLink to="/">Thousands of products are waiting for you!</NavLink>
+            <NavLink className="cart-empty" to="/">
+              Thousands of products are waiting for you!
+            </NavLink>
           </div>
         )}
       </div>

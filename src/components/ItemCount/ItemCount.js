@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import CartContext from "../../context/CartContext";
 import "../ItemCount/ItemCount.css";
 
-function ItemCount({ stock, init, onAdd }) {
+function ItemCount({ stock, init, onAdd, onAddCart }) {
   const [contador, setContador] = useState((init = 1));
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const { addItem } = useContext(CartContext);
@@ -58,6 +58,7 @@ function ItemCount({ stock, init, onAdd }) {
       </div>
       <div className="button-container">
         <button
+          onClick={() => onAddCart(contador)}
           className={`outline outline-2 m-2 button-buy  px-5`}
           disabled={buttonDisabled}
         >

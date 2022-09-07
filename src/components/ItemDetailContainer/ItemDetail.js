@@ -2,8 +2,11 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CartContext from "../../context/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
-import NavBarItemDetail from "../NavBar/NavBarItemDetail";
 import "./ItemDetail.css";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 function ItemDetail({ item }) {
   const { id, title, price, img, stock, description } = item[0];
@@ -16,6 +19,22 @@ function ItemDetail({ item }) {
     setCountCart(count);
     addItem(item, count);
     navigate("/cart");
+  };
+
+  const onAddCart = (count) => {
+    addItem(item, count);
+    MySwal.fire({
+      title: "Added to cart!",
+      toast: true,
+      background: "#ff8b00",
+      color: "#ffff",
+      position: "top-end",
+      icon: "success",
+      iconColor: "#ffff",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+    });
   };
 
   return (
@@ -37,7 +56,7 @@ function ItemDetail({ item }) {
             </div>
           </div>
           <div className="add-cart-buy">
-            <ItemCount stock={stock} onAdd={onAdd} />
+            <ItemCount stock={stock} onAdd={onAdd} onAddCart={onAddCart} />
           </div>
         </div>
         <hr />
