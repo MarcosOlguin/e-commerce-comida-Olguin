@@ -41,7 +41,44 @@ const CartProvider = ({ children }) => {
     return inCart;
   };
 
-  const data = { addItem, removeItem, clear, isInCart, cart, setCart, total };
+  const sum = (e) => {
+    console.log(e);
+    if (e.stock > e.countCart) {
+      setCart(
+        cart.map((cartItem) =>
+          cartItem.id === e.id
+            ? { ...cartItem, countCart: cartItem.countCart + 1 }
+            : cartItem
+        )
+      );
+    }
+  };
+
+  const rest = (e) => {
+    setCart(
+      cart.map((cartItem) =>
+        cartItem.id === e.id
+          ? { ...cartItem, countCart: cartItem.countCart - 1 }
+          : cartItem
+      )
+    );
+
+    if (e.countCart < 2) {
+      removeItem(e.id);
+    }
+  };
+
+  const data = {
+    addItem,
+    removeItem,
+    clear,
+    isInCart,
+    cart,
+    setCart,
+    total,
+    sum,
+    rest,
+  };
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 };
 

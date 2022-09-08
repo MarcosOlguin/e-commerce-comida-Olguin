@@ -4,35 +4,8 @@ import CartContext from "../../context/CartContext";
 import "./Cart.css";
 
 function Cart() {
-  const { cart, clear, removeItem, addItem, setCart, total } =
+  const { cart, clear, removeItem, addItem, setCart, total, sum, rest } =
     useContext(CartContext);
-
-  const sum = (e) => {
-    console.log(e);
-    if (e.stock > e.countCart) {
-      setCart(
-        cart.map((cartItem) =>
-          cartItem.id === e.id
-            ? { ...cartItem, countCart: cartItem.countCart + 1 }
-            : cartItem
-        )
-      );
-    }
-  };
-
-  const rest = (e) => {
-    setCart(
-      cart.map((cartItem) =>
-        cartItem.id === e.id
-          ? { ...cartItem, countCart: cartItem.countCart - 1 }
-          : cartItem
-      )
-    );
-
-    if (e.countCart < 2) {
-      removeItem(e.id);
-    }
-  };
 
   return (
     <>
