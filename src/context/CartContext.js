@@ -35,7 +35,11 @@ const CartProvider = ({ children }) => {
     setCart([]);
   };
 
-  const isInCart = () => {};
+  const isInCart = (id) => {
+    let inCart = cart.some((item) => item.id === id);
+    console.log(inCart);
+    return inCart;
+  };
 
   const data = { addItem, removeItem, clear, isInCart, cart, setCart, total };
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;

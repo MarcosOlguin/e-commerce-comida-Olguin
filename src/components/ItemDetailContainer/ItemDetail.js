@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CartContext from "../../context/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
@@ -10,18 +10,25 @@ const MySwal = withReactContent(Swal);
 
 function ItemDetail({ item }) {
   const { id, title, price, img, stock, description } = item[0];
-  const [countCart, setCountCart] = useState(1);
+  const [countCart, setCountCart] = useState(false);
   const { addItem, removeItem, clear, isInCart } = useContext(CartContext);
 
   let navigate = useNavigate();
 
+  useEffect(() => {
+    const res = isInCart(id);
+    if (res) {
+      setCountCart(true);
+    }
+  }, [item]);
+
   const onAdd = (count) => {
-    setCountCart(count);
     addItem(item, count);
     navigate("/cart");
   };
 
   const onAddCart = (count) => {
+    console.log(countCart);
     addItem(item, count);
     MySwal.fire({
       title: "Added to cart!",
@@ -56,7 +63,11 @@ function ItemDetail({ item }) {
             </div>
           </div>
           <div className="add-cart-buy">
-            <ItemCount stock={stock} onAdd={onAdd} onAddCart={onAddCart} />
+            {countCart ? (
+              <button>Go to cart</button>
+            ) : (
+              <ItemCount stock={stock} onAdd={onAdd} onAddCart={onAddCart} />
+            )}
           </div>
         </div>
         <hr />

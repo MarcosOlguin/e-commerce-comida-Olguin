@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import CartContext from "../../context/CartContext";
 import "../ItemCount/ItemCount.css";
 
-function ItemCount({ stock, init, onAdd, onAddCart }) {
+function ItemCount({ stock, init, onAdd, onAddCart, setCount }) {
   const [contador, setContador] = useState((init = 1));
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const { addItem } = useContext(CartContext);

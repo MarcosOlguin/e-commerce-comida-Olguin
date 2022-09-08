@@ -42,8 +42,8 @@ function Cart() {
           <div className="cart-background flex flex-col justify-">
             <div className="asddd">
               {cart.map((e) => (
-                <div className="cart-border">
-                  <div className="cart-details" key={e.id}>
+                <div className="cart-border" key={e.id}>
+                  <div className="cart-details">
                     <div className="flex items-center gap-5">
                       <div className="flex items-center justify- h-full text-orange-500 ">
                         <button onClick={() => removeItem(e.id)}>X</button>
