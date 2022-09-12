@@ -9,7 +9,7 @@ import withReactContent from "sweetalert2-react-content";
 const MySwal = withReactContent(Swal);
 
 function ItemDetail({ item }) {
-  const { id, title, price, img, stock, description } = item[0];
+  const { id, title, price, img, stock, description } = item;
   const [countCart, setCountCart] = useState(false);
   const [onCart, setonCart] = useState();
   const { addItem, removeItem, clear, isInCart } = useContext(CartContext);
