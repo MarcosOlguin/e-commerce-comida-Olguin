@@ -5,6 +5,7 @@ module.exports = {
     "./src/components/ItemCount/ItemCount.js",
     "./src/components/Cart/Cart.js",
     "./src/components/NavBar/NavBar.js",
+    "./src/components/ItemDetailContainer/ItemDetail.js",
   ],
   theme: {
     extend: {},

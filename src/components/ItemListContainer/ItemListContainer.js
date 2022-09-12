@@ -1,5 +1,6 @@
 import { useEffect, useState, memo } from "react";
 import { useParams } from "react-router-dom";
+import { getItems, getItemsFilter } from "../../firebase/firebase";
 import ItemList from "../Item/ItemList";
 import Loading from "../Loading/Loading";
 import "./ItemListContainer.css";
@@ -12,26 +13,40 @@ function ItemListContainer({ greeting }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const task = new Promise((resolve, rejected) => {
-      setLoading(true);
-      setTimeout(() => {
-        resolve(jsonData.data);
-      }, 2000);
-    });
+    // const task = new Promise((resolve, rejected) => {
+    //   setLoading(true);
+    //   setTimeout(() => {
+    //     resolve(jsonData.data);
+    //   }, 2000);
+    // });
+    // task.then((res) => setItems(res)).then(setLoading(false));
+    setLoading(true);
+    const asyncItems = async () => {
+      const items = await getItems();
+      setLoading(false);
+      setItems(items);
+      console.log(items);
+    };
 
-    task.then((res) => setItems(res)).then(setLoading(false));
+    asyncItems();
   }, []);
 
   useEffect(() => {
-    if (category) {
-      let filter = items.filter((e) => e.category === category);
-      setItemsFilter(filter);
-    }
-    console.log(category);
-  }, [items, category]);
+    // if (category) {
+    //   let filter = items.filter((e) => e.category === category);
+    //   setItemsFilter(filter);
+    // }
+    // console.log(category);
 
-  console.log(items);
-  console.log(itemsFilter);
+    if (category) {
+      const asyncItems = async () => {
+        const items = await getItemsFilter(category);
+        setItemsFilter(items);
+      };
+
+      asyncItems();
+    }
+  }, [items, category]);
 
   return (
     <>

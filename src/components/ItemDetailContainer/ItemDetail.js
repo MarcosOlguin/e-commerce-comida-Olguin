@@ -11,6 +11,7 @@ const MySwal = withReactContent(Swal);
 function ItemDetail({ item }) {
   const { id, title, price, img, stock, description } = item[0];
   const [countCart, setCountCart] = useState(false);
+  const [onCart, setonCart] = useState();
   const { addItem, removeItem, clear, isInCart } = useContext(CartContext);
 
   let navigate = useNavigate();
@@ -24,11 +25,13 @@ function ItemDetail({ item }) {
 
   const onAdd = (count) => {
     addItem(item, count);
+    setCountCart(true);
     navigate("/cart");
   };
 
   const onAddCart = (count) => {
     console.log(countCart);
+    setCountCart(true);
     addItem(item, count);
     MySwal.fire({
       title: "Added to cart!",
@@ -42,6 +45,10 @@ function ItemDetail({ item }) {
       timer: 3000,
       timerProgressBar: true,
     });
+  };
+
+  const goToCart = () => {
+    navigate("/cart");
   };
 
   return (
@@ -62,9 +69,16 @@ function ItemDetail({ item }) {
               <span>Ver medios de pago</span>
             </div>
           </div>
-          <div className="add-cart-buy">
+          <div className={`add-cart-buy`}>
             {countCart ? (
-              <button>Go to cart</button>
+              <div>
+                <div className="pb-4">
+                  You already have this product in the cart
+                </div>
+                <button className={`go-to-cart`} onClick={goToCart}>
+                  Go to cart
+                </button>
+              </div>
             ) : (
               <ItemCount stock={stock} onAdd={onAdd} onAddCart={onAddCart} />
             )}

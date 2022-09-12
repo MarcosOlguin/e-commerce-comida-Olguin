@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import CartContext from "../../context/CartContext";
+import Form from "../Form/Form";
 import "./Cart.css";
 
 function Cart() {
@@ -9,10 +10,10 @@ function Cart() {
 
   return (
     <>
-      <div className="background flex flex-col items-center">
-        <p className="mt-9 text-4xl">Cart</p>
+      <div className="background flex  items-center">
         {cart.length !== 0 ? (
           <div className="cart-background flex flex-col justify-">
+            <p className="mt-9 text-4xl">Cart</p>
             <div className="asddd">
               {cart.map((e) => (
                 <div className="cart-border" key={e.id}>
@@ -79,6 +80,9 @@ function Cart() {
             </NavLink>
           </div>
         )}
+        <div>
+          <Form total={total} items={cart} />
+        </div>
       </div>
     </>
   );

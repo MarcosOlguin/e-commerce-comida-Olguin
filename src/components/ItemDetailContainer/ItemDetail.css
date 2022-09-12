@@ -43,6 +43,7 @@ hr {
   flex-direction: column;
   height: 50vh;
   gap: 2rem;
+  align-items: center;
 }
 
 .description {
@@ -66,4 +67,20 @@ hr {
 
 .item-detail-img img:hover {
   transform: scale(1.1);
+}
+
+.go-to-cart {
+  border-radius: 5px;
+  padding: 0.3rem;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 0.7rem 2rem 0.7rem 2rem;
+  background-color: #ff8b00;
+  color: #ffff;
+  transition: background-color 0.3s ease-in-out;
+  width: 100%;
+}
+
+.go-to-cart:hover {
+  background-color: #cf7100;
 }

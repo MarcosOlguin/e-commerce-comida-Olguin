@@ -5,7 +5,7 @@ function ItemList({ items, ItemCount }) {
   return (
     <div className="flex-center">
       <div className="item-list">
-        {items && items.map((item) => <Item item={item} key={item.id} />)}
+        {items && items.map((item, i) => <Item item={item} key={i} />)}
       </div>
     </div>
   );
