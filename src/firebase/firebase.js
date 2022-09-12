@@ -45,7 +45,7 @@ export async function getItems() {
   return items;
 }
 
-// Obtener items filtrados
+// Obtener items filtrados por categoria
 export async function getItemsFilter(category) {
   const items = [];
   const collectionRef = collection(db, "items");
@@ -61,12 +61,10 @@ export async function getItemsFilter(category) {
 
 //Obtener 1 solo item filtrado
 export async function getItemDetail(id) {
-  const items = [];
   const collectionRef = collection(db, "items");
   const docRef = doc(collectionRef, id);
   const document = await getDoc(docRef);
   const data = { id: document.id, ...document.data() };
-  items.push(data);
 
-  return items;
+  return data;
 }
