@@ -5,7 +5,6 @@ import "./NavBar.css";
 import "../../../node_modules/hamburgers/_sass/hamburgers/hamburgers.scss";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import NavCategories from "./NavCategories";
-import ModalFilters from "./ModalFilters";
 
 function NavBar({ onChange, search, searchFilter }) {
   const [scrollUp, setScrollUp] = useState(true);

@@ -193,4 +193,20 @@ nav {
     padding: 0.3rem 9rem 0.3rem 1rem;
     border-radius: 60px;
   }
+  .menu-category {
+    padding-top: 1rem;
+    font-size: 26px;
+    border-bottom: 1px solid;
+    width: 6.6rem;
+  }
+
+  .menu-title-nav-bar h2 {
+    font-size: 30px;
+    padding-top: 2rem;
+  }
+
+  .menu-title-nav-bar-detail h2 {
+    font-size: 30px;
+    padding-top: 6rem;
+  }
 }

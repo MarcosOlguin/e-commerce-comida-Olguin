@@ -36,3 +36,16 @@
   transition: transform 0.2s ease-out;
   z-index: -1;
 }
+
+@media screen and (max-width: 800px) {
+  .modal-container {
+    font-weight: bold;
+    padding: 1rem;
+    width: 40vw;
+    min-height: 110vh;
+    background-color: #fff;
+    transition: transform 0.2s ease-out;
+    transform: translateX(-100%);
+    z-index: -1;
+  }
+}
