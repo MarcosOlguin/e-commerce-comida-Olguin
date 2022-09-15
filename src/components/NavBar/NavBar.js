@@ -3,16 +3,28 @@ import CartWidget from "../CartWidget/CartWidget";
 import WindowModal from "../WindowModal/WindowModal";
 import "./NavBar.css";
 import "../../../node_modules/hamburgers/_sass/hamburgers/hamburgers.scss";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import NavCategories from "./NavCategories";
 import ModalFilters from "./ModalFilters";
 
-function NavBar() {
+function NavBar({ onChange, search, searchFilter }) {
   const [scrollUp, setScrollUp] = useState(true);
   const [isActive, setIsActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [type, setType] = useState("");
 
   const navigate = useNavigate();
+  const { id } = useParams();
+  let location = useLocation();
+
+  useEffect(() => {
+    if (type) {
+      navigate(`/category/${type}`);
+    }
+    if (type === "all") {
+      navigate("/");
+    }
+  }, [type]);
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => {
@@ -43,10 +55,12 @@ function NavBar() {
   };
   const handleClickDesactive = () => setIsActive(false);
 
-  console.log(isActive);
-
   const navigateHomeClick = () => {
     navigate("/");
+  };
+
+  const captureType = (e) => {
+    setType(e.target.value);
   };
 
   return (
@@ -56,7 +70,11 @@ function NavBar() {
         closeModal={closeModal}
         handleClickDesactive={handleClickDesactive}
       >
-        <div className="menu-title-nav-bar">
+        <div
+          className={`menu-title-nav-bar${
+            id || location.pathname === "/cart" ? "-detail" : ""
+          }`}
+        >
           <h2>The OAK</h2>
           <span>Furniture shop</span>
         </div>
@@ -66,9 +84,13 @@ function NavBar() {
         <NavCategories />
       </WindowModal>
 
-      <div className={`header-nav-bar ${scrollUp}`}>
-        <header className={`trigger-menu-wrapper `}>
-          <div>
+      <div
+        className={`header-nav-bar ${scrollUp}${
+          id || location.pathname === "/cart" ? "-detail" : ""
+        }`}
+      >
+        <header className={`trigger-menu-wrapper`}>
+          <div className="menu-container">
             <button
               style={{
                 zIndex: 54,
@@ -89,25 +111,66 @@ function NavBar() {
             <span className="menu">Menú</span>
           </div>
           <div className="nav-bar-title" onClick={navigateHomeClick}>
-            <img src="https://cdn-icons-png.flaticon.com/512/5437/5437538.png" />
-            <div className="flex flex-col justify-center text-center">
-              <h1 className="h-8">The Oak</h1>
-              <span>Furniture Shop</span>
+            <img
+              className="icon-img"
+              src="https://cdn-icons-png.flaticon.com/512/5437/5437538.png"
+            />
+            <div className="titlee flex flex-col justify-center text-center ">
+              <h1 className="h-2 mb-1 titlee md:h-8">The Oak</h1>
+              <span className="span">Furniture Shop</span>
             </div>
           </div>
           <div>
-            <input type="text" placeholder="Search" className="search" />
+            <input
+              onChange={onChange}
+              type="text"
+              value={search}
+              placeholder="Search"
+              className="search"
+            />
+            <div className="search-results">
+              {scrollUp &&
+                search &&
+                searchFilter.map((e) => (
+                  <div
+                    onClick={() => {
+                      navigate(`/item/${e.id}`);
+                    }}
+                    className="container-search"
+                  >
+                    <div className="title-search">{e.title}</div>
+                    <div className="image-search">
+                      <img src={e.img} width="30px" />
+                    </div>
+                  </div>
+                ))}
+            </div>
           </div>
+
           <div></div>
           <div>
             <CartWidget />
           </div>
         </header>
-        <nav>
+
+        <nav
+          className={`filters${
+            id || location.pathname === "/cart" ? "-disabled" : ""
+          }`}
+        >
           <div className="filter-button-container">
-            <select>
-              Category
-              <option value={"chairs"}>chairs</option>
+            <select
+              onChange={captureType}
+              style={{ backgroundColor: "#e3e3e3" }}
+            >
+              <option value="">Category</option>
+              <option value="all">All</option>
+              <option value="chairs">Chairs</option>
+              <option value="desks">Desks</option>
+              <option value="tables">Tables</option>
+              <option value="shelfs">Shelfs</option>
+              <option value="beds">Beds</option>
+              <option value="closets">Closets</option>
             </select>
           </div>
           <div className="filter-button-container">

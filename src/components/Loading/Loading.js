@@ -1,6 +1,6 @@
 import "./Loading.css";
 
-function Loading() {
+function Loading({ name }) {
   return (
     <div className="loading-container">
       <div className="lds-roller">
@@ -13,6 +13,7 @@ function Loading() {
         <div></div>
         <div></div>
       </div>
+      <p>{name}</p>
     </div>
   );
 }

@@ -8,6 +8,16 @@
   transition: transform 0.4s;
 }
 
+.header-nav-bar-detail {
+  position: sticky;
+  top: 0vh;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  min-height: 10vh;
+  transition: transform 0.4s;
+}
+
 .trigger-menu-wrapper {
   display: flex;
   align-items: center;
@@ -22,6 +32,10 @@
 
 .header-nav-bar.false {
   transform: translate3d(0, -60%, 0);
+}
+
+.header-nav-bar.false-detail {
+  transform: translate3d(0, -100%, 0);
 }
 
 h1 {
@@ -40,6 +54,10 @@ nav {
   justify-content: center;
   background-color: white;
   border-bottom: 1px solid #e3e3e3;
+}
+
+.filters-disabled {
+  display: none;
 }
 
 .menu {
@@ -67,7 +85,15 @@ nav {
   text-align: center;
 }
 
+.menu-title-nav-bar-detail {
+  text-align: center;
+}
+
 .menu-title-nav-bar h2 {
+  font-size: 40px;
+}
+
+.menu-title-nav-bar-detail h2 {
   font-size: 40px;
 }
 
@@ -85,4 +111,86 @@ nav {
 .nav-bar-title img {
   max-width: 80px;
   margin-left: 20px;
+}
+
+.search-results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  z-index: 999;
+  background-color: #ffff;
+  border: solid 1px;
+  border-radius: 5px;
+}
+
+.container-search {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.container-search:hover {
+  text-decoration: underline;
+}
+
+.image-search {
+  margin-right: 1rem;
+}
+
+.title-search {
+  margin-left: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+  .filters {
+    display: none;
+  }
+
+  .header-nav-bar.false {
+    transform: translate3d(0, -100%, 0);
+  }
+
+  .icon-img {
+    width: 40px;
+    height: 40px;
+  }
+  .nav-bar-title {
+    display: flex;
+    font-size: 16px;
+  }
+
+  .titlee {
+    font-size: 16px;
+  }
+
+  .span {
+    line-height: 1;
+  }
+
+  .menu-container {
+    order: 0;
+    width: 40px;
+  }
+
+  .trigger-menu-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+    overflow: auto;
+    min-height: 10vh;
+    background-image: url("https://baldocer.com/wp-content/uploads/thumbs/1579519468_714b684648d97a9f65c986ac70336627_env808.jpg");
+  }
+
+  .search {
+    width: 20px;
+    padding-left: 3rem;
+    padding-right: 0rem;
+    padding: 0.3rem 9rem 0.3rem 1rem;
+    border-radius: 60px;
+  }
 }

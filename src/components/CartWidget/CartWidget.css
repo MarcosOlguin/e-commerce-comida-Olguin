@@ -1,5 +1,6 @@
 .cart {
-  width: 40px;
+  min-width: 20px;
+  max-width: 40px;
   background-color: transparent;
   padding: 0rem;
   cursor: pointer;
@@ -7,9 +8,10 @@
 
 .cart-container {
   background-color: transparent;
-  padding: 0.6rem;
+  padding: 0rem;
   border-radius: 10px;
   display: flex;
+  min-width: 40px;
 }
 
 .circle {

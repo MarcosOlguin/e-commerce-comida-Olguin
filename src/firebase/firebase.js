@@ -11,6 +11,7 @@ import {
   where,
   setDoc,
   deleteDoc,
+  updateDoc,
 } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -45,7 +46,7 @@ export async function getItems() {
   return items;
 }
 
-// Obtener items filtrados por categoria
+// Obtener items filtrados
 export async function getItemsFilter(category) {
   const items = [];
   const collectionRef = collection(db, "items");
@@ -67,4 +68,21 @@ export async function getItemDetail(id) {
   const data = { id: document.id, ...document.data() };
 
   return data;
+}
+
+//Crear documento "orders"
+export async function sendOrder(order) {
+  try {
+    const ordersCollection = collection(db, "orders");
+    const res = addDoc(ordersCollection, order);
+    return res;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+//Actualizar stock
+export async function updateStock(id, stock) {
+  const itemRef = doc(db, "items", id);
+  await updateDoc(itemRef, { stock: stock });
 }

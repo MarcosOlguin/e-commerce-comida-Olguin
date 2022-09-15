@@ -56,7 +56,7 @@ function ItemDetail({ item }) {
       <div className="asd">
         <div className="item-container">
           <div className="item-detail-img">
-            <img className="img-detail" src={img} />
+            <img src={img} />
           </div>
 
           <div className="detail-container">

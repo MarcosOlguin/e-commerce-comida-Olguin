@@ -4,7 +4,7 @@
 }
 
 .div-img {
-  min-width: 400px;
+  width: 400px;
   min-height: 400px;
   overflow: visible;
 }
@@ -35,15 +35,19 @@
 
 .details {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   height: 3vh;
   padding: 0.8rem;
   transition: background-color 0.2s ease-in-out;
+  width: 90%;
+  background-color: #c4c4c4;
+  border-radius: 3px;
+  color: #ffff;
 }
 
 .details:hover {
-  background-color: #abb2b9;
+  background-color: #808b96;
   cursor: pointer;
 }
 
@@ -51,4 +55,46 @@
   border-bottom: solid thin green;
   padding-top: 5rem;
   border-color: #cdcdcd;
+}
+
+.add-to-cart-item-button {
+  background-color: #ff8b00;
+  transition: background-color 0.3s ease-in-out;
+  width: 90%;
+  padding: 0.2rem;
+  border-radius: 3px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.add-to-cart-item-button-no-stock {
+  background-color: #c4c4c4;
+  transition: background-color 0.3s ease-in-out;
+  width: 90%;
+  padding: 0.2rem;
+  border-radius: 3px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.add-to-cart-item-button:hover {
+  background-color: #cf7100;
+}
+
+@media screen and (max-width: 800px) {
+  .div-img {
+    width: 300px;
+    min-height: 350px;
+    overflow: visible;
+  }
+
+  .item-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 460px));
+    place-content: center;
+  }
 }

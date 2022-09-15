@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getItems, getItemsFilter } from "../../firebase/firebase";
 import ItemList from "../Item/ItemList";
 import Loading from "../Loading/Loading";
+import NavBar from "../NavBar/NavBar";
 import "./ItemListContainer.css";
 const jsonData = require(`../../api/db.json`);
 
@@ -11,6 +12,8 @@ function ItemListContainer({ greeting }) {
   const [items, setItems] = useState([]);
   const [itemsFilter, setItemsFilter] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState("");
+  const [searchFilter, setSearchFilter] = useState([]);
 
   useEffect(() => {
     // const task = new Promise((resolve, rejected) => {
@@ -48,18 +51,43 @@ function ItemListContainer({ greeting }) {
     }
   }, [items, category]);
 
+  const onChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  useEffect(() => {
+    if (search) {
+      const filter = items.filter(
+        (item) => item.title.toLowerCase().indexOf(search.toLowerCase()) !== -1
+      );
+
+      setSearchFilter(filter);
+
+      console.log(searchFilter);
+    }
+  }, [search]);
+
   return (
     <>
-      {loading && <Loading />}
+      <NavBar onChange={onChange} search={search} searchFilter={searchFilter} />
       <div>
         {category ? (
           <h2 className="title">
             {category[0].toUpperCase() + category.substring(1)}
           </h2>
         ) : (
-          <h2 className="title">All products</h2>
+          <>
+            <h2 className="title">All products</h2>
+            {loading && <Loading name={"Loading products..."} />}
+            {search !== "" && searchFilter.length === 0 && (
+              <div className="not-found">not found</div>
+            )}
+          </>
         )}
-        <ItemList items={category ? itemsFilter : items} />
+
+        <ItemList
+          items={category ? itemsFilter : search !== "" ? searchFilter : items}
+        />
       </div>
     </>
   );

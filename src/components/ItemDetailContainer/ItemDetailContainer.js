@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { getItemDetail } from "../../firebase/firebase";
 import Loading from "../Loading/Loading";
-import NavBarItemDetail from "../NavBar/NavBarItemDetail";
+import NavBar from "../NavBar/NavBar";
 import ItemDetail from "./ItemDetail";
+import "./ItemDetailContainer.css";
 const jsonData = require(`../../api/db.json`);
 
 function ItemDetailCointainer() {
@@ -34,9 +35,12 @@ function ItemDetailCointainer() {
 
   return (
     <>
-      <div style={{ backgroundColor: "#F2F2F2 " }}>
-        <NavBarItemDetail />
-        {loading && <Loading />}
+      <div className="background-detail-container">
+        <NavBar />
+        <div className="loader-detail-container">
+          {loading && <Loading name={"Loading product..."} />}
+        </div>
+
         {item && <ItemDetail item={item} />}
       </div>
     </>

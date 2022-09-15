@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const CartContext = createContext();
 
@@ -10,7 +10,7 @@ const CartProvider = ({ children }) => {
   );
 
   const addItem = (item, countCart) => {
-    let itemID = { ...item[0], countCart };
+    let itemID = { ...item, countCart };
     let itemInCart = cart.some((e) => e.id === itemID.id);
 
     !itemInCart
@@ -52,6 +52,8 @@ const CartProvider = ({ children }) => {
         )
       );
     }
+
+    console.log(cart);
   };
 
   const rest = (e) => {
@@ -68,7 +70,7 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  const data = {
+  let data = {
     addItem,
     removeItem,
     clear,
@@ -79,6 +81,7 @@ const CartProvider = ({ children }) => {
     sum,
     rest,
   };
+
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 };
 

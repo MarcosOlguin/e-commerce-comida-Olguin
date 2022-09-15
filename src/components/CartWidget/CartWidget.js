@@ -10,7 +10,7 @@ function CartWidget() {
   useEffect(() => {
     if (cart.length === 0) {
       setCartDisabled(true);
-    }
+    } else setCartDisabled(false);
   }, [cart]);
 
   let navigate = useNavigate();

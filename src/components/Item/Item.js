@@ -1,12 +1,19 @@
 import "./Item.css";
 import "./Heart.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ItemCount from "../ItemCount/ItemCount";
 import { useNavigate } from "react-router-dom";
+import CartContext from "../../context/CartContext";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 function Item({ item }) {
   const [active, setActive] = useState(false);
   const { title, price, img, id } = item;
+  const { addItem } = useContext(CartContext);
+
   let navigate = useNavigate();
 
   const likeClick = () => {
@@ -18,9 +25,26 @@ function Item({ item }) {
     navigate(`/item/${id}`);
   };
 
+  const addToCart = () => {
+    addItem(item, 1);
+    console.log(item.stock);
+    MySwal.fire({
+      title: "Added to cart!",
+      toast: true,
+      background: "#ff8b00",
+      color: "#ffff",
+      position: "top-end",
+      icon: "success",
+      iconColor: "#ffff",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+    });
+  };
+
   //console.log(active);
   return (
-    <div className="item px-10">
+    <div className="item px-10 pb-10">
       <div onClick={detailsClick} className="div-img">
         <img className="img-item" src={img} alt="img" />
       </div>
@@ -32,9 +56,24 @@ function Item({ item }) {
         </p>
         <span onClick={likeClick} className={`heart-${active}`}></span>
       </div>
-      <button onClick={detailsClick} id={id} className="details mb-40 mt-3">
-        Details
-      </button>
+      <div className=" pt-2">
+        {item.stock > 0 ? (
+          <button onClick={addToCart} className="add-to-cart-item-button pl-3">
+            Add to Cart
+            <span className="material-icons">shopping_cart</span>
+          </button>
+        ) : (
+          <button className="add-to-cart-item-button-no-stock pl-3">
+            No stock
+          </button>
+        )}
+      </div>
+
+      <div className="pb-3">
+        <button onClick={detailsClick} className="details  mt-3">
+          Details
+        </button>
+      </div>
     </div>
   );
 }

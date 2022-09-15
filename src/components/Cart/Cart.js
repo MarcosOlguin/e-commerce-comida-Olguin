@@ -9,18 +9,23 @@ function Cart() {
     useContext(CartContext);
 
   return (
-    <>
-      <div className="background flex  items-center">
+    <div className="ad">
+      <div className="background">
         {cart.length !== 0 ? (
           <div className="cart-background flex flex-col justify-">
-            <p className="mt-9 text-4xl">Cart</p>
+            <p className="mt-9 ml-11 text-4xl cart-title">Shopping Cart</p>
             <div className="asddd">
-              {cart.map((e) => (
-                <div className="cart-border" key={e.id}>
+              {cart.map((e, i) => (
+                <div className="cart-border" key={i}>
                   <div className="cart-details">
                     <div className="flex items-center gap-5">
                       <div className="flex items-center justify- h-full text-orange-500 ">
-                        <button onClick={() => removeItem(e.id)}>X</button>
+                        <span
+                          className="material-icons"
+                          onClick={() => removeItem(e.id)}
+                        >
+                          close
+                        </span>
                       </div>
                       <div className="flex items-center gap-3 w-52">
                         <img src={e.img} />
@@ -68,9 +73,6 @@ function Cart() {
                 <span>${total.toLocaleString("en-US")}</span>
               </div>
             </div>
-            <div className="checkout self-end">
-              <button>Proceed to checkout</button>
-            </div>
           </div>
         ) : (
           <div className="cart-background-empty text-2xl">
@@ -84,7 +86,7 @@ function Cart() {
           <Form total={total} items={cart} />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

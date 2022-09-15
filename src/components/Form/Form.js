@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { async } from "@firebase/util";
+import { useContext, useEffect, useState } from "react";
+import CartContext from "../../context/CartContext";
+import { sendOrder, updateStock } from "../../firebase/firebase";
 import "./Form.css";
 
 function Form({ total, items }) {
+  const { clear } = useContext(CartContext);
   const [formulario, setFormulario] = useState({
     buyer: {
       name: "",
@@ -12,9 +16,16 @@ function Form({ total, items }) {
     items: items,
   });
 
+  //Actualiza el countCart cada vez que se modifica
+  useEffect(() => {
+    setFormulario({
+      ...formulario,
+      items: items,
+    });
+  }, [items]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(e);
 
     setFormulario({
       ...formulario,
@@ -25,38 +36,89 @@ function Form({ total, items }) {
     });
   };
 
-  const { name, phone, email } = formulario;
+  const validations = (e) => {
+    e.preventDefault();
+
+    if (
+      formulario.buyer.email === "" ||
+      formulario.buyer.name === "" ||
+      formulario.buyer.phone === ""
+    ) {
+      return alert("Complete all the forms");
+    }
+
+    const expr1 =
+      /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (!expr1.test(formulario.buyer.email))
+      return alert(
+        "Error: the email direction " + formulario.buyer.email + " is invalid."
+      );
+
+    handleSubmit(e);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await sendOrder(formulario);
+    if (res) {
+      formulario.items.forEach((item) => {
+        console.log(item);
+        let stockUpdate = item.stock - item.countCart;
+        updateStock(item.id, stockUpdate);
+        clear();
+      });
+    }
+    alert(res.id);
+    setFormulario({
+      ...formulario,
+      buyer: {
+        name: "",
+        phone: "",
+        email: "",
+      },
+    });
+  };
 
   return (
-    <div>
-      <form>
+    <div className={`form-container${total === 0 ? "-hidden" : ""}`}>
+      <h2 className="checkout-title">Checkout</h2>
+      <h2 className="checkout-subtitle">Personal Data</h2>
+      <form onSubmit={validations}>
         <div className="inputs">
-          <div>
+          <div className="input-container">
             <p>Name</p>
             <input
               type="text"
-              value={name}
+              value={formulario.buyer.name}
               name="name"
               onChange={handleChange}
             />
           </div>
-          <div>
+          <div className="input-container">
             <p>Email</p>
             <input
               type="text"
-              value={email}
+              value={formulario.buyer.email}
               name="email"
               onChange={handleChange}
             />
           </div>
-          <div>
+          <div className="input-container">
             <p>Phone</p>
             <input
-              type="text"
-              value={phone}
+              type="number"
+              value={formulario.buyer.phone}
               name="phone"
               onChange={handleChange}
             />
+          </div>
+        </div>
+        <div className="checkout-button-container">
+          <p className="checkout-total">
+            Total: ${total.toLocaleString("en-US")}
+          </p>
+          <div className="checkout-button">
+            <button type="submit">Proceed to checkout</button>
           </div>
         </div>
       </form>
