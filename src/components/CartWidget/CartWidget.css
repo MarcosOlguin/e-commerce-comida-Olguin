@@ -31,3 +31,12 @@
 .circle.true {
   visibility: hidden;
 }
+
+@media screen and (max-width: 800px) {
+  .cart {
+    width: 25px;
+    background-color: transparent;
+    padding: 0rem;
+    cursor: pointer;
+  }
+}

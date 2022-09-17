@@ -19,6 +19,7 @@
 }
 
 .trigger-menu-wrapper {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,14 +73,6 @@ nav {
   border-radius: 60px;
 }
 
-.filter-button-container {
-  text-align: left;
-  background-color: #e3e3e3;
-  border-radius: 15px;
-  padding: 0.5rem 1rem;
-  margin: 1rem 2rem 1rem 2rem;
-}
-
 .menu-title-nav-bar {
   margin-top: 7vh;
   text-align: center;
@@ -106,6 +99,7 @@ nav {
 
 .nav-bar-title {
   display: flex;
+  cursor: pointer;
 }
 
 .nav-bar-title img {
@@ -176,12 +170,13 @@ nav {
   }
 
   .trigger-menu-wrapper {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 0px;
     text-align: center;
-    overflow: auto;
+    overflow: hidden;
     min-height: 10vh;
     background-image: url("https://baldocer.com/wp-content/uploads/thumbs/1579519468_714b684648d97a9f65c986ac70336627_env808.jpg");
   }
@@ -208,5 +203,26 @@ nav {
   .menu-title-nav-bar-detail h2 {
     font-size: 30px;
     padding-top: 6rem;
+  }
+
+  .search-results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    z-index: 999;
+    background-color: #ffff;
+    border: solid 1px;
+    border-radius: 5px;
+    left: 0;
+    margin-top: 12px;
+  }
+
+  .container-search {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5rem;
+    cursor: pointer;
   }
 }

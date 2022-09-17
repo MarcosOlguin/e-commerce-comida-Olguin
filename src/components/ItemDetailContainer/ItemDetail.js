@@ -5,6 +5,7 @@ import ItemCount from "../ItemCount/ItemCount";
 import "./ItemDetail.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import Footer from "../Footer/Footer";
 
 const MySwal = withReactContent(Swal);
 
@@ -66,7 +67,7 @@ function ItemDetail({ item }) {
             <div className="stars"></div>
             <div className="detail-price">
               <h2>${price}</h2>
-              <span>Ver medios de pago</span>
+              <span>See payment methods</span>
             </div>
           </div>
           <div className={`add-cart-buy`}>
@@ -84,12 +85,12 @@ function ItemDetail({ item }) {
             )}
           </div>
         </div>
-        <hr />
         <div className="description">
           <h2>Description</h2>
           <p>{description}</p>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

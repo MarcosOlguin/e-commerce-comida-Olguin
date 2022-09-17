@@ -3,6 +3,10 @@ import { useContext, useEffect, useState } from "react";
 import CartContext from "../../context/CartContext";
 import { sendOrder, updateStock } from "../../firebase/firebase";
 import "./Form.css";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 function Form({ total, items }) {
   const { clear } = useContext(CartContext);
@@ -43,16 +47,35 @@ function Form({ total, items }) {
       formulario.buyer.email === "" ||
       formulario.buyer.name === "" ||
       formulario.buyer.phone === ""
-    ) {
-      return alert("Complete all the forms");
-    }
+    )
+      return MySwal.fire({
+        title: `Complete all the forms`,
+        toast: false,
+        background: "#ff8b00",
+        color: "#ffff",
+        position: "center",
+        icon: "error",
+        iconColor: "#ffff",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      });
 
     const expr1 =
       /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     if (!expr1.test(formulario.buyer.email))
-      return alert(
-        "Error: the email direction " + formulario.buyer.email + " is invalid."
-      );
+      return MySwal.fire({
+        title: `Error: Invalid email`,
+        toast: false,
+        background: "#ff8b00",
+        color: "#ffff",
+        position: "center",
+        icon: "error",
+        iconColor: "#ffff",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      });
 
     handleSubmit(e);
   };
@@ -68,7 +91,18 @@ function Form({ total, items }) {
         clear();
       });
     }
-    alert(res.id);
+    MySwal.fire({
+      title: `Purchase completed! Your id of comprobant is ${res.id}`,
+      toast: true,
+      background: "#ff8b00",
+      color: "#ffff",
+      position: "center",
+      icon: "success",
+      iconColor: "#ffff",
+      showConfirmButton: false,
+      timer: 5000,
+      timerProgressBar: true,
+    });
     setFormulario({
       ...formulario,
       buyer: {

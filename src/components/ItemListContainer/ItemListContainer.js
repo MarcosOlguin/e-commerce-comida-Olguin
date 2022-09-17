@@ -1,6 +1,7 @@
 import { useEffect, useState, memo } from "react";
 import { useParams } from "react-router-dom";
 import { getItems, getItemsFilter } from "../../firebase/firebase";
+import Footer from "../Footer/Footer";
 import ItemList from "../Item/ItemList";
 import Loading from "../Loading/Loading";
 import NavBar from "../NavBar/NavBar";
@@ -67,17 +68,44 @@ function ItemListContainer({ greeting }) {
     }
   }, [search]);
 
+  const onBlurSearch = (e) => {
+    console.log(e);
+    setTimeout(() => {
+      setSearch("");
+    }, 100);
+    //setSearch("");
+  };
+
   return (
     <>
-      <NavBar onChange={onChange} search={search} searchFilter={searchFilter} />
+      <NavBar
+        onChange={onChange}
+        search={search}
+        searchFilter={searchFilter}
+        onBlurSearch={onBlurSearch}
+      />
       <div>
         {category ? (
-          <h2 className="title">
-            {category[0].toUpperCase() + category.substring(1)}
-          </h2>
+          <div>
+            {" "}
+            <h2 className="title">
+              {category[0].toUpperCase() + category.substring(1)}
+            </h2>
+            <p className="title-description">
+              {`Explore our wide variety of ${
+                category[0].toUpperCase() + category.substring(1)
+              }`}
+            </p>
+          </div>
         ) : (
           <>
-            <h2 className="title">All products</h2>
+            <div>
+              <h2 className="title">All products</h2>
+              <p className="title-description">
+                Explore our wide variety of furniture
+              </p>
+            </div>
+
             {loading && <Loading name={"Loading products..."} />}
             {search !== "" && searchFilter.length === 0 && (
               <div className="not-found">not found</div>
@@ -89,6 +117,7 @@ function ItemListContainer({ greeting }) {
           items={category ? itemsFilter : search !== "" ? searchFilter : items}
         />
       </div>
+      <Footer />
     </>
   );
 }

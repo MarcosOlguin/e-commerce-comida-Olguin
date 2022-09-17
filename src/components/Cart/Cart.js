@@ -13,7 +13,14 @@ function Cart() {
       <div className="background">
         {cart.length !== 0 ? (
           <div className="cart-background flex flex-col justify-">
-            <p className="mt-9 ml-11 text-4xl cart-title">Shopping Cart</p>
+            <div className="cart-title">
+              {" "}
+              <p className="mt-9 ml-11 text-4xl ">Shopping Cart</p>
+              <button className="delete-all" onClick={clear}>
+                <span className="material-icons">delete</span>
+              </button>
+            </div>
+
             <div className="asddd">
               {cart.map((e, i) => (
                 <div className="cart-border" key={i}>
@@ -66,7 +73,7 @@ function Cart() {
                 </div>
               ))}
             </div>
-            <button onClick={clear}>Clear all</button>
+
             <div className="flex justify-between px-32 mt-10 text-3xl">
               <span>Total</span>
               <div>

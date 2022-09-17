@@ -49,7 +49,7 @@ function Item({ item }) {
         <img className="img-item" src={img} alt="img" />
       </div>
 
-      <h2 className="pt-3 pb-3 pl-3 text-xl font-bold">{title}</h2>
+      <h2 className="pt-4 pb-3 pl-3 text-xl font-bold">{title}</h2>
       <div className="div-flex ">
         <p className="pl-3 text-xl font-bold">
           ${price.toLocaleString("en-US")}

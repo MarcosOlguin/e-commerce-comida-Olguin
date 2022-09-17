@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { getItemDetail } from "../../firebase/firebase";
+import Footer from "../Footer/Footer";
 import Loading from "../Loading/Loading";
 import NavBar from "../NavBar/NavBar";
 import ItemDetail from "./ItemDetail";
