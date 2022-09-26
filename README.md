@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# Furniture shop The Oak
+![Captura de pantalla 2022-09-18 230455](https://user-images.githubusercontent.com/101753720/190939252-de800d69-745f-4c6b-8781-a9a72e0b60b6.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introducción
+The Oak es un e-commerce que desarrollé durante el curso de React en CoderHouse, la interfaz de usuario esta desarrollada con React y maneja una base de datos y hosting de Firebase
+> Deploy : https://e-commerce-coderhouse-b0e54.web.app/
 
-## Available Scripts
 
-In the project directory, you can run:
+## Tecnologías
 
-### `npm start`
+Las herramientas que utilicé fueron:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-JavaScript
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-CSS
 
-### `npm test`
+-HTML
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-React
 
-### `npm run build`
+-React Hooks
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-Firebase
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-Tailwind
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-React Router
 
-### `npm run eject`
+-SweetAlert 2
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+-React pagination
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## ¿Porqué utilizé estas tecnologías?
+Principalmente utilicé la libreria de React para hacer la interfaz de usuario porque es una de las librerias en auge ahora mismo y me se me hace muy cómoda, además que de eso se trataba el curso.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### React Router
+Me ayudó con la navegabilidad del proyecto, con los redireccionamientos a través de los NavLinks y las rutas.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![2022-09-19 01-13-54](https://user-images.githubusercontent.com/101753720/190949018-e55240bd-96a2-4e2d-b405-3dbeef3ce0c9.gif)
 
-## Learn More
+### React Hooks
+Los React Hooks que utilicé fueron useEffect, useState, memo(para memorizar los productos en el home), cree un customHook para hacer la ventana modal del menú y usé el context para extraer la lógica del cart y poder proveer los items del carrito y sus funciones a todos los componentes que lo necesiten.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```js
+const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState([]);
+```
+### Tailwind
+Hasta ahora me pareció el mejor framework de estilos porque ofrece una manera rápida y sencilla de agregarlos, además tiene mucha libertad al no generar un componente predefinido sino que te brinda una lista de clases que se pueden utilizar individualmente. Lo único que no me termina de convencer es que queda demasiado lleno el componente y se genera mucho texto, pero igualmente me sigue pareciendo muy cómodo usarlo.
 
-### Code Splitting
+### Firebase
+En firebase está la base de datos del proyecto, utilicé el Firestore para crear 2 colecciónes:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+-Una para los productos, sus detalles y stock(el cual se actualiza al realizar una compra)
 
-### Analyzing the Bundle Size
+![Captura de pantalla 2022-09-19 012447](https://user-images.githubusercontent.com/101753720/190949637-8d5fffa2-e627-425a-b5f8-945040214a27.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+-Y otra para los datos de los usuarios que realizan la compra
 
-### Making a Progressive Web App
+![Captura de pantalla 2022-09-19 012811](https://user-images.githubusercontent.com/101753720/190949900-3bf575ac-6f97-43c7-8206-040c3f2d3707.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### SweetAlert 2
+Con esta librería hice las alertas que se activan cuando se agrega un producto al carrito y al realizar la compra que devuelve el id de la transacción, son muy prácticas y fáciles de hacer.
 
-### Advanced Configuration
+### React Pagination
+Me ayudo a realizar la paginación del proyecto.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
