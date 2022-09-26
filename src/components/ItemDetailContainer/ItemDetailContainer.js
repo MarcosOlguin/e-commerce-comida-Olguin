@@ -29,7 +29,6 @@ function ItemDetailCointainer() {
       const res = await getItemDetail(id);
       setLoading(false);
       setItem(res);
-      console.log(res);
     };
     asyncItem();
   }, [id]);

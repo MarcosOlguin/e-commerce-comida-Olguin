@@ -21,7 +21,6 @@ function Item({ item }) {
   };
 
   const detailsClick = (e) => {
-    console.log(e);
     navigate(`/item/${id}`);
   };
 

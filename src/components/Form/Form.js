@@ -85,7 +85,6 @@ function Form({ total, items }) {
     const res = await sendOrder(formulario);
     if (res) {
       formulario.items.forEach((item) => {
-        console.log(item);
         let stockUpdate = item.stock - item.countCart;
         updateStock(item.id, stockUpdate);
         clear();

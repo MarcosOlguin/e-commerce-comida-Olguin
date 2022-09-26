@@ -8,6 +8,7 @@ function CartPage() {
       <div style={{ backgroundColor: "#F2F2F2 " }}>
         <NavBar />
         <Cart />
+        <Footer />
       </div>
     </>
   );

@@ -7,7 +7,14 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import NavCategories from "./NavCategories";
 import Select from "./Select";
 
-function NavBar({ onChange, search, searchFilter, onBlurSearch }) {
+function NavBar({
+  onChange,
+  search,
+  searchFilter,
+  onBlurSearch,
+  handleAvailable,
+  availableOnly,
+}) {
   const [scrollUp, setScrollUp] = useState(true);
   const [isActive, setIsActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -161,14 +168,12 @@ function NavBar({ onChange, search, searchFilter, onBlurSearch }) {
         >
           <Select captureType={captureType} />
 
-          <div className="filter-button-container">
-            <button>Price</button>
-          </div>
-          <div className="filter-button-container">
-            <button>Material</button>
-          </div>
-          <div className="filter-button-container">
-            <button>Available online</button>
+          <div
+            className={`filter-button-container${
+              availableOnly ? "-active" : ""
+            }`}
+          >
+            <button onClick={handleAvailable}>Available only</button>
           </div>
         </nav>
       </div>

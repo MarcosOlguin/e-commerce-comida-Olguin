@@ -25,24 +25,18 @@ const CartProvider = ({ children }) => {
   };
 
   const removeItem = (id) => {
-    let itemToDelte = cart.find((item) => item.id === id);
-    console.log(itemToDelte);
-
     setCart(cart.filter((itemCart) => itemCart.id !== id));
   };
 
   const clear = () => {
     setCart([]);
   };
-
   const isInCart = (id) => {
     let inCart = cart.some((item) => item.id === id);
-    console.log(inCart);
     return inCart;
   };
 
   const sum = (e) => {
-    console.log(e);
     if (e.stock > e.countCart) {
       setCart(
         cart.map((cartItem) =>
@@ -52,8 +46,6 @@ const CartProvider = ({ children }) => {
         )
       );
     }
-
-    console.log(cart);
   };
 
   const rest = (e) => {
@@ -64,7 +56,6 @@ const CartProvider = ({ children }) => {
           : cartItem
       )
     );
-
     if (e.countCart < 2) {
       removeItem(e.id);
     }

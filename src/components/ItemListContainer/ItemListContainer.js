@@ -15,6 +15,8 @@ function ItemListContainer({ greeting }) {
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [searchFilter, setSearchFilter] = useState([]);
+  const [availableOnly, setAvailableOnly] = useState(false);
+  const [availableFilter, setAvailableFilter] = useState([]);
 
   useEffect(() => {
     // const task = new Promise((resolve, rejected) => {
@@ -29,7 +31,6 @@ function ItemListContainer({ greeting }) {
       const items = await getItems();
       setLoading(false);
       setItems(items);
-      console.log(items);
     };
 
     asyncItems();
@@ -63,8 +64,6 @@ function ItemListContainer({ greeting }) {
       );
 
       setSearchFilter(filter);
-
-      console.log(searchFilter);
     }
   }, [search]);
 
@@ -76,6 +75,23 @@ function ItemListContainer({ greeting }) {
     //setSearch("");
   };
 
+  const handleAvailable = () => {
+    if (availableOnly) {
+      setAvailableOnly(false);
+    } else {
+      setAvailableOnly(true);
+    }
+  };
+
+  useEffect(() => {
+    if (availableOnly) {
+      const filter = items.filter((item) => item.stock > 0);
+      setAvailableFilter(filter);
+    } else {
+      setAvailableFilter([]);
+    }
+  }, [availableOnly]);
+
   return (
     <>
       <NavBar
@@ -83,6 +99,8 @@ function ItemListContainer({ greeting }) {
         search={search}
         searchFilter={searchFilter}
         onBlurSearch={onBlurSearch}
+        handleAvailable={handleAvailable}
+        availableOnly={availableOnly}
       />
       <div>
         {category ? (
@@ -114,7 +132,15 @@ function ItemListContainer({ greeting }) {
         )}
 
         <ItemList
-          items={category ? itemsFilter : search !== "" ? searchFilter : items}
+          items={
+            category
+              ? itemsFilter
+              : search !== ""
+              ? searchFilter
+              : availableFilter.length > 0
+              ? availableFilter
+              : items
+          }
         />
       </div>
       <Footer />

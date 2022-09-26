@@ -40,7 +40,6 @@ export async function getItems() {
 
   snapshot.forEach((item) => {
     const data = { id: item.id, ...item.data() };
-    console.log(item.id);
     items.push(data);
   });
   return items;
